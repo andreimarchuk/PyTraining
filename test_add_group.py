@@ -15,7 +15,7 @@ class TestAddGroup(unittest.TestCase):
         self.open_home_page(wd)
         self.login(wd, "admin", "secret")
         self.open_group_page(wd)
-        self.create_group(wd, Group(name="11", header="22", footer="33"))
+        self.create_group(wd, Group(name="test name", header="test header", footer="test footer"))
         self.return_to_group_page(wd)
         self.logout(wd)
 
@@ -24,7 +24,7 @@ class TestAddGroup(unittest.TestCase):
         self.open_home_page(wd)
         self.login(wd, "admin", "secret")
         self.open_group_page(wd)
-        self.create_group(wd, Group(name="11", header="22", footer="33"))
+        self.create_group(wd, Group(name="", header="", footer=""))
         self.return_to_group_page(wd)
         self.logout(wd)
 
