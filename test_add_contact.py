@@ -4,7 +4,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support.ui import Select
 import unittest
-import datetime
+import os
 from contact import Contact
 
 class TestAddContact(unittest.TestCase):
@@ -40,7 +40,7 @@ class TestAddContact(unittest.TestCase):
         self.change_value_by_name(wd, "middlename", contact.middlename)
         self.change_value_by_name(wd, "lastname", contact.lastname)
         self.change_value_by_name(wd, "nickname", contact.nickname)
-        self.change_value_by_name(wd, "photo", contact.photo)
+        wd.find_element_by_name("photo").send_keys(os.path.abspath("test_image.jpg"))
         self.change_value_by_name(wd, "title", contact.title)
         self.change_value_by_name(wd, "company", contact.company)
         self.change_value_by_name(wd, "address", contact.address)
@@ -65,6 +65,11 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name(name).clear()
         wd.find_element_by_name(name).send_keys(text)
 
+    def change_value_by_xpath(self, wd, path, text):
+        wd.find_element_by_xpath(path).click()
+        wd.find_element_by_xpath(path).clear()
+        wd.find_element_by_xpath(path).send_keys(text)
+
     def upload_contact_photo(self, wd, name, text):
         wd.find_element_by_name(name).click()
         wd.find_element_by_name(name).send_keys(text)
@@ -73,15 +78,14 @@ class TestAddContact(unittest.TestCase):
         d_xpath = "//label[contains(text(), '"+date_label+"')]//following-sibling::select[1]"
         m_xpath = "//label[contains(text(), '"+date_label+"')]//following-sibling::select[2]"
         y_xpath = "//label[contains(text(), '"+date_label+"')]//following-sibling::input[1]"
-        wd.find_element_by_xpath(d_xpath).click()
-        Select(wd.find_element_by_xpath(d_xpath)).select_by_visible_text(date.split()[0])
-        wd.find_element_by_xpath(d_xpath).click()
-        wd.find_element_by_xpath(m_xpath).click()
-        Select(wd.find_element_by_xpath(m_xpath)).select_by_visible_text(date.split()[1])
-        wd.find_element_by_xpath(m_xpath).click()
-        wd.find_element_by_xpath(y_xpath).click()
-        wd.find_element_by_xpath(y_xpath).clear()
-        wd.find_element_by_xpath(y_xpath).send_keys(date.split()[2])
+        self.select_element_in_dropdown(wd, d_xpath, date.split()[0])
+        self.select_element_in_dropdown(wd, m_xpath, date.split()[1])
+        self.change_value_by_xpath(wd, y_xpath, date.split()[2])
+
+    def select_element_in_dropdown(self, wd, path, value):
+        wd.find_element_by_xpath(path).click()
+        Select(wd.find_element_by_xpath(path)).select_by_visible_text(value)
+        wd.find_element_by_xpath(path).click()
 
     def open_add_new_page(self, wd):
         wd.find_element_by_link_text("add new").click()
