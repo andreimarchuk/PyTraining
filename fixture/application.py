@@ -1,7 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 # from fixture.helper_manager import session, group, contact
-from fixture.helper_manager import HelperManager
+from fixture.session import SessionHelper
+from fixture.group import GroupHelper
+from fixture.contact import ContactHelper
 
 
 class Application:
@@ -9,7 +11,9 @@ class Application:
     def __init__(self):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
-        self.hm = HelperManager(self)
+        self.session = SessionHelper(self)
+        self.group = GroupHelper(self)
+        self.contact = ContactHelper(self)
 
     def change_value_by_name(self, name, text):
         wd = self.wd
@@ -28,6 +32,10 @@ class Application:
         wd.find_element_by_xpath(path).click()
         Select(wd.find_element_by_xpath(path)).select_by_visible_text(value)
         wd.find_element_by_xpath(path).click()
+
+    def return_to_homepage(self):
+        wd = self.wd
+        wd.find_element_by_xpath("//a[contains(text(),'home')]").click()
 
     def destroy(self):
         wd = self.wd

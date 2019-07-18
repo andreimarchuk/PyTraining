@@ -1,3 +1,7 @@
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 class SessionHelper:
 
@@ -17,3 +21,6 @@ class SessionHelper:
     def logout(self):
         wd = self.app.wd
         wd.find_element_by_link_text("Logout").click()
+        wait = WebDriverWait(wd, 15)
+        wait.until(
+            EC.visibility_of_element_located((By.XPATH, "//input[@value='Login']")))

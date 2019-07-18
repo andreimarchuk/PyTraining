@@ -10,6 +10,20 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("add new").click()
         # fill contact form
+        self.fill_contact(contact, wd)
+        # submit contact creation
+        wd.find_element_by_css_selector("[name = submit]:last-child").click()
+
+    def edit(self, firstname, contactEdit):
+        wd = self.app.wd
+        self.app.change_value_by_name("searchstring", firstname)
+        # fill contact form
+        self.fill_contact(contactEdit, wd)
+        # update contact
+        wd.find_element_by_css_selector("[name = update]:last-child").click()
+        self.app.return_to_homepage()
+
+    def fill_contact(self, contact, wd):
         self.app.change_value_by_name("firstname", contact.firstname)
         self.app.change_value_by_name("middlename", contact.middlename)
         self.app.change_value_by_name("lastname", contact.lastname)
@@ -31,8 +45,6 @@ class ContactHelper:
         self.app.change_value_by_name("address2", contact.address2)
         self.app.change_value_by_name("phone2", contact.phone2)
         self.app.change_value_by_name("notes", contact.notes)
-        # submit group creation
-        wd.find_element_by_css_selector("[name = submit]:last-child").click()
 
     def change_contact_date(self, date_label, date):
         d_xpath = "//label[contains(text(), '" + date_label + "')]//following-sibling::select[1]"
@@ -41,3 +53,10 @@ class ContactHelper:
         self.app.select_element_in_dropdown(d_xpath, date.split()[0])
         self.app.select_element_in_dropdown(m_xpath, date.split()[1])
         self.app.change_value_by_xpath(y_xpath, date.split()[2])
+
+    def delete(self, firstname):
+        wd = self.app.wd
+        self.app.change_value_by_name("searchstring", firstname)
+        wd.find_element_by_xpath("//td[contains(text(), 'test firstname')]//preceding-sibling::td[@class='center']//descendant::input").click()
+        wd.find_element_by_xpath("//input[@value = 'Delete']").click()
+        wd.switch_to_alert().accept()
