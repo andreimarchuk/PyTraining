@@ -14,9 +14,11 @@ class ContactHelper:
         # submit contact creation
         wd.find_element_by_css_selector("[name = submit]:last-child").click()
 
-    def edit(self, firstname, contactEdit):
+    def edit(self, searched_lastname, searched_firstname, contactEdit):
         wd = self.app.wd
-        self.app.change_value_by_name("searchstring", firstname)
+        self.app.change_value_by_name("searchstring", searched_lastname + ' ' + searched_firstname)
+        # start edit contact
+        wd.find_element_by_xpath("//td[contains(text(), 'test firstname')]//following-sibling::td[5]").click()
         # fill contact form
         self.fill_contact(contactEdit, wd)
         # update contact
@@ -54,9 +56,9 @@ class ContactHelper:
         self.app.select_element_in_dropdown(m_xpath, date.split()[1])
         self.app.change_value_by_xpath(y_xpath, date.split()[2])
 
-    def delete(self, firstname):
+    def delete(self, searched_lastname, searched_firstname):
         wd = self.app.wd
-        self.app.change_value_by_name("searchstring", firstname)
-        wd.find_element_by_xpath("//td[contains(text(), 'test firstname')]//preceding-sibling::td[@class='center']//descendant::input").click()
+        self.app.change_value_by_name("searchstring", searched_lastname + ' ' + searched_firstname)
+        wd.find_element_by_xpath("//td[contains(text(), '"+searched_lastname+"')]//preceding-sibling::td[@class='center']").click()
         wd.find_element_by_xpath("//input[@value = 'Delete']").click()
         wd.switch_to_alert().accept()

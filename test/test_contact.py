@@ -17,7 +17,8 @@ def test_add_contact(app):
 
 def test_edit_contact(app):
     app.session.login("admin", "secret")
-    app.contact.edit("test firstname", Contact(firstname="editTest firstname",
+    app.contact.edit("test lastname", "test firstname",
+                               Contact(firstname="editTest firstname",
                                middlename="editTest middlename", lastname="editTest lastname",
                                nickname="editTest nickname", photo="C:\\fakepath\\Untitled.jpg",
                                title="editTest title", company="editTest company", address="editTest address",
@@ -30,5 +31,5 @@ def test_edit_contact(app):
 
 def test_delete_contact(app):
     app.session.login("admin", "secret")
-    app.contact.delete("test firstname")
+    app.contact.delete("editTest lastname", "editTest firstname")
     app.session.logout()
