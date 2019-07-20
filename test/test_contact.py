@@ -3,7 +3,6 @@ from model.contact import Contact
 
 
 def test_add_contact(app):
-    app.session.login("admin", "secret")
     app.contact.create(Contact(firstname="test firstname", middlename="test middlename",
                                lastname="test lastname", nickname="test nickname",
                                photo="C:\\fakepath\\Untitled.jpg",
@@ -13,10 +12,8 @@ def test_add_contact(app):
                                homepage="test homepage", birthday="11 May 1977",
                                anniversary="3 June 1959", address2="test address2",
                                phone2="test phone2", notes="test notes"))
-    app.session.logout()
 
 def test_edit_contact(app):
-    app.session.login("admin", "secret")
     app.contact.edit("test lastname", "test firstname",
                                Contact(firstname="editTest firstname",
                                middlename="editTest middlename", lastname="editTest lastname",
@@ -27,12 +24,7 @@ def test_edit_contact(app):
                                homepage="editTest homepage", birthday="25 May 1980",
                                anniversary="25 June 1980", address2="editTest address2",
                                phone2="editTest phone2", notes="editTest notes"))
-    app.session.logout()
 
 def test_delete_contact(app):
-    app.session.login("admin", "secret")
     app.contact.delete("editTest lastname", "editTest firstname")
-    app.session.logout()
 
-
-    

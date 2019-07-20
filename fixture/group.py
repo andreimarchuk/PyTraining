@@ -11,12 +11,15 @@ class GroupHelper:
         # start group creation
         wd.find_element_by_name("new").click()
         # fill group form
-        self.app.change_value_by_name("group_name", group.name)
-        self.app.change_value_by_name("group_header", group.header)
-        self.app.change_value_by_name("group_footer", group.footer)
+        self.fill_group_form(group)
         # submit group creation
         wd.find_element_by_name("submit").click()
         self.return_to_group_page()
+
+    def fill_group_form(self, group):
+        self.app.change_value_by_name("group_name", group.name)
+        self.app.change_value_by_name("group_header", group.header)
+        self.app.change_value_by_name("group_footer", group.footer)
 
     def edit(self, searched_group, group):
         wd = self.app.wd
@@ -26,9 +29,7 @@ class GroupHelper:
         # start edit group
         wd.find_element_by_css_selector("[name = edit]:last-child").click()
         # fill group form
-        self.app.change_value_by_name("group_name", group.name)
-        self.app.change_value_by_name("group_header", group.header)
-        self.app.change_value_by_name("group_footer", group.footer)
+        self.fill_group_form(group)
         # submit group creation
         wd.find_element_by_name("update").click()
         self.return_to_group_page()
