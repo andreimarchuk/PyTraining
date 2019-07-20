@@ -4,14 +4,16 @@ from model.group import Group
 
 def test_add_group(app):
     app.group.create(Group(name="test group", header="test group header", footer="test group footer"))
-    app.session.logout()
 
 
 def test_edit_group(app):
-    app.group.edit("test group", Group(name="testEdit group"))
-    app.session.logout()
+    if app.group.count() == 0:
+        app.group.create(Group(name="test group", header="test group header", footer="test group footer"))
+    app.group.edit_first_group(Group(name="testEdit group"))
 
 
 def test_delete_group(app):
-    app.group.delete("testEdit group")
+    if app.group.count() == 0:
+        app.group.create(Group(name="testEdit group"))
+    app.group.delete_first_group()
 
