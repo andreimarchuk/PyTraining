@@ -31,6 +31,8 @@ class SessionHelper:
     def logout(self):
         wd = self.app.wd
         wd.find_element_by_link_text("Logout").click()
+        wait = WebDriverWait(wd, 15)
+        wait.until(EC.presence_of_element_located((By.XPATH, "//input[@value='Login']")))
 
     def ensure_logout(self):
         if self.is_logged_in():
@@ -38,7 +40,6 @@ class SessionHelper:
 
     def is_logged_in(self):
         wd = self.app.wd
-        time.sleep(1)
         return len(wd.find_elements_by_xpath("//form[@name = 'logout']/a")) > 0
 
     def is_logged_in_as(self, username):
