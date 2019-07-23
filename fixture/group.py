@@ -50,11 +50,13 @@ class GroupHelper:
 
     def open_group_page(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("groups").click()
+        if not wd.current_url.endswith("/group.php") and len(wd.find_element_by_name("new") > 0):
+            wd.find_element_by_link_text("groups").click()
 
     def return_to_group_page(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("group page").click()
+        if not wd.current_url.endswith("/group.php") and len(wd.find_element_by_name("new") > 0):
+            wd.find_element_by_link_text("group page").click()
 
     # def edit(self, searched_group, group):
     #     wd = self.app.wd
