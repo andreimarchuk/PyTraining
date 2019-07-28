@@ -1,4 +1,5 @@
 import os
+from model.contact import Contact
 import time
 
 class ContactHelper:
@@ -68,8 +69,19 @@ class ContactHelper:
         wd.find_element_by_xpath("//td[@class = 'center'][1]//input").click()
         wd.find_element_by_xpath("//input[@value = 'Delete']").click()
         wd.switch_to_alert().accept()
+        wd.find_element_by_link_text('home').click()
 
 
+    def get_contact_list(self):
+        wd = self.app.wd
+        self.app.return_to_homepage()
+        contacts = []
+        for element in wd.find_elements_by_xpath("//tr[position()>1]"):
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            lastname = element.find_element_by_xpath("td[2]").text
+            firstname = element.find_element_by_xpath("td[3]").text
+            contacts.append(Contact(id=id, lastname=lastname, firstname=firstname))
+        return contacts
 
     # def edit(self, searched_lastname, searched_firstname, contactEdit):
     #     wd = self.app.wd
