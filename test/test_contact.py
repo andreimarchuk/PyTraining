@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import time
 from model.contact import Contact
+from random import randrange
 
 
 def test_add_contact(app):
@@ -23,6 +24,7 @@ def test_edit_contact(app):
     if app.contact.count() == 0:
         app.contact.create(Contact(firstname="test firstname", lastname="test lastname"))
     old_contacts = app.contact.get_contact_list()
+    index = randrange(len(old_contacts))
     contact = Contact(firstname="editTest firstname", middlename="editTest middlename",
                                lastname="editTest lastname", nickname="editTest nickname", photo="C:\\fakepath\\Untitled.jpg",
                                title="editTest title", company="editTest company", address="editTest address",
@@ -31,11 +33,11 @@ def test_edit_contact(app):
                                homepage="editTest homepage", birthday="25 May 1980",
                                anniversary="25 June 1980", address2="editTest address2",
                                phone2="editTest phone2", notes="editTest notes")
-    contact.id = old_contacts[0].id
-    app.contact.edit_first_contact(contact)
+    contact.id = old_contacts[index].id
+    app.contact.edit_some_contact(contact, index)
     assert len(old_contacts) == app.contact.count()
     new_contacts = app.contact.get_contact_list()
-    old_contacts[0] = contact
+    old_contacts[index] = contact
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
 
 
@@ -43,8 +45,9 @@ def test_delete_contact(app):
     if app.contact.count() == 0:
         app.contact.create(Contact(firstname="test firstname", middlename="test middlename", lastname="test lastname"))
     old_contacts = app.contact.get_contact_list()
-    app.contact.delete_first_contact()
+    index = randrange(len(old_contacts))
+    app.contact.delete_some_contact(index)
     assert len(old_contacts) - 1 == app.contact.count()
     new_contacts = app.contact.get_contact_list()
-    old_contacts[0:1] = []
+    old_contacts[index:index+1] = []
     assert old_contacts == new_contacts

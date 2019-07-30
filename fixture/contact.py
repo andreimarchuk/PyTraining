@@ -20,10 +20,11 @@ class ContactHelper:
         self.app.return_to_homepage()
         self.contact_cache = None
 
-    def edit_first_contact(self, contactEdit):
+    def edit_some_contact(self, contactEdit, index):
         wd = self.app.wd
         # start edit contact
-        wd.find_element_by_xpath("//tr[@name = 'entry'][1]//td[8]").click()
+        xpath_index = str(index+1)
+        wd.find_element_by_xpath("//tr[@name = 'entry']["+xpath_index+"]//td[8]").click()
         # fill contact form
         self.fill_contact(contactEdit, wd)
         # update contact
@@ -64,13 +65,17 @@ class ContactHelper:
             self.app.select_element_in_dropdown(m_xpath, date.split()[1])
             self.app.change_value_by_xpath(y_xpath, date.split()[2])
 
-    def delete_first_contact(self):
+    def delete_some_contact(self, index):
         wd = self.app.wd
-        wd.find_element_by_xpath("//td[@class = 'center'][1]//input").click()
+        self.select_contact_by_index(index)
         wd.find_element_by_xpath("//input[@value = 'Delete']").click()
         wd.switch_to_alert().accept()
         wd.find_element_by_link_text('home').click()
         self.contact_cache = None
+
+    def select_contact_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_xpath("//td[@class = 'center']//input")[index].click()
 
     def count(self):
         wd = self.app.wd

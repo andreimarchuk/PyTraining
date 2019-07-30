@@ -26,13 +26,15 @@ class GroupHelper:
         self.app.change_value_by_name("group_header", group.header)
         self.app.change_value_by_name("group_footer", group.footer)
 
-    def edit_first_group(self, group):
+    def edit_first_group(self):
+        self.edit_group_by_index(0)
+
+
+    def edit_group_by_index(self, group, index):
         wd = self.app.wd
         self.open_group_page()
-        # search and check group
-        wd.find_element_by_xpath("//span[@class = 'group'][1]//input").click()
-        # start edit group
-        wd.find_element_by_css_selector("[name = edit]:last-child").click()
+        self.select_group_by_index(index)
+        wd.find_element_by_name("edit").click()
         # fill group form
         self.fill_group_form(group)
         # submit group creation
@@ -46,14 +48,19 @@ class GroupHelper:
         return len(wd.find_elements_by_name("selected[]"))
 
     def delete_first_group(self):
+        self.delete_group_by_index(0)
+
+    def delete_group_by_index(self, index):
         wd = self.app.wd
         self.open_group_page()
-        # search and check group
-        wd.find_element_by_xpath("//span[@class = 'group'][1]//input").click()
-        # delete edit group
-        wd.find_element_by_xpath("//input[@name = 'delete'][1]").click()
+        self.select_group_by_index(index)
+        wd.find_element_by_name("delete").click()
         self.return_to_group_page()
         self.group_cache = None
+
+    def select_group_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
 
     def open_group_page(self):
         wd = self.app.wd
