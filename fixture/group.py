@@ -85,7 +85,13 @@ class GroupHelper:
                 self.group_cache.append(Group(name=text, id=id))
         return list(self.group_cache)
 
-
+    def delete_all_groups(self):
+        wd = self.app.wd
+        self.open_group_page()
+        for element in wd.find_elements_by_css_selector("span.group"):
+            element.find_element_by_name("selected[]").click()
+        wd.find_element_by_name("delete").click()
+        self.return_to_group_page()
 
 
     # def edit(self, searched_group, group):
