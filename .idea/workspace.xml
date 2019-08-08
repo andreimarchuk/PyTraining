@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="28eecc04-a008-4d62-a38c-aae9feaed18b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fixture/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixture/group.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/group.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test_contact.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_contact.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixture/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixture/application.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixture/session.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixture/session.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test_group.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_group.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -68,8 +68,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.pytest in test_contact.py">
-    <configuration name="pytest for test_contact.test_add_contact" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.pytest in test">
+    <configuration name="pytest for test_group.test_add_group" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="PyTraining" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -80,11 +80,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_contact.test_add_contact&quot;" />
+      <option name="_new_target" value="&quot;test_group.test_add_group&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_contact.test_compare_some_contact_data_from_home_edit_pages" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_group.test_delete_all_groups" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="PyTraining" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -95,11 +95,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_contact.test_compare_some_contact_data_from_home_edit_pages&quot;" />
+      <option name="_new_target" value="&quot;test_group.test_delete_all_groups&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_contact.test_delete_contact" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_group.test_delete_some_group" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="PyTraining" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -110,11 +110,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_contact.test_delete_contact&quot;" />
+      <option name="_new_target" value="&quot;test_group.test_delete_some_group&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_contact.test_edit_contact" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_group.test_edit_some_group" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="PyTraining" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -125,11 +125,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_contact.test_edit_contact&quot;" />
+      <option name="_new_target" value="&quot;test_group.test_edit_some_group&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in test_contact.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest in test" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="PyTraining" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -140,17 +140,17 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/test_contact.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest in test_contact.py" />
-        <item itemvalue="Python tests.pytest for test_contact.test_compare_some_contact_data_from_home_edit_pages" />
-        <item itemvalue="Python tests.pytest for test_contact.test_delete_contact" />
-        <item itemvalue="Python tests.pytest for test_contact.test_edit_contact" />
-        <item itemvalue="Python tests.pytest for test_contact.test_add_contact" />
+        <item itemvalue="Python tests.pytest in test" />
+        <item itemvalue="Python tests.pytest for test_group.test_add_group" />
+        <item itemvalue="Python tests.pytest for test_group.test_delete_some_group" />
+        <item itemvalue="Python tests.pytest for test_group.test_delete_all_groups" />
+        <item itemvalue="Python tests.pytest for test_group.test_edit_some_group" />
       </list>
     </recent_temporary>
   </component>
