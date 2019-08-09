@@ -4,9 +4,7 @@
     <list default="true" id="28eecc04-a008-4d62-a38c-aae9feaed18b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fixture/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixture/application.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fixture/session.py" beforeDir="false" afterPath="$PROJECT_DIR$/fixture/session.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test_group.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_contact.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_contact.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,14 +44,15 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Leo_Burnett\Sources\PyTraining" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Leo_Burnett\Sources\PyTraining\test" />
+      <recent name="D:\Leo_Burnett\Sources\PyTraining" />
       <recent name="D:\Leo_Burnett\Sources\PyTraining\tests" />
       <recent name="D:\Leo_Burnett\Sources\PyTraining\model" />
       <recent name="D:\Leo_Burnett\Sources\PyTraining\fixture" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Leo_Burnett\Sources\PyTraining" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -68,13 +67,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.pytest in test">
+  <component name="RunManager" selected="Python tests.pytest in test_contact.py">
+    <configuration name="pytest for test_contact.test_add_contact" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="PyTraining" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_contact.test_add_contact&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="pytest for test_group.test_add_group" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="PyTraining" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -84,48 +98,18 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_group.test_delete_all_groups" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="PyTraining" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_group.test_delete_all_groups&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="pytest for test_group.test_delete_some_group" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="PyTraining" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_group.test_delete_some_group&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pytest for test_group.test_edit_some_group" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="PyTraining" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_group.test_edit_some_group&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -144,13 +128,35 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="pytest in test_contact.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="PyTraining" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/test_contact.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python tests.pytest for test_group.test_add_group" />
+      <item itemvalue="Python tests.pytest for test_group.test_delete_some_group" />
+      <item itemvalue="Python tests.pytest in test" />
+      <item itemvalue="Python tests.pytest for test_contact.test_add_contact" />
+      <item itemvalue="Python tests.pytest in test_contact.py" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest in test" />
+        <item itemvalue="Python tests.pytest in test_contact.py" />
+        <item itemvalue="Python tests.pytest for test_contact.test_add_contact" />
         <item itemvalue="Python tests.pytest for test_group.test_add_group" />
         <item itemvalue="Python tests.pytest for test_group.test_delete_some_group" />
-        <item itemvalue="Python tests.pytest for test_group.test_delete_all_groups" />
-        <item itemvalue="Python tests.pytest for test_group.test_edit_some_group" />
+        <item itemvalue="Python tests.pytest in test" />
       </list>
     </recent_temporary>
   </component>

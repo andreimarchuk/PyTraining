@@ -61,6 +61,7 @@ def test_delete_contact(app):
     old_contacts[index:index+1] = []
     assert old_contacts == new_contacts
 
+
 def test_compare_some_contact_data_from_home_edit_pages(app):
     index = random.randrange(app.contact.count())
     contact_from_home_page = app.contact.get_contact_list()[index]
@@ -75,11 +76,13 @@ def test_compare_some_contact_data_from_home_edit_pages(app):
 def clear(s):
     return re.sub("[() -]", "", s)
 
+
 def merge_phones_like_on_home_page(contact):
     return "\n".join(filter(lambda x: x != "",
                                 map(lambda x: clear(x),
                                     filter(lambda x: x is not None,
                                            [contact.home, contact.mobile, contact.work, contact.phone2]))))
+
 
 def merge_emails_like_on_home_page(contact):
     return "\n".join(filter(lambda x: x != "",
