@@ -1,4 +1,6 @@
 import os
+import time
+
 from model.contact import Contact
 import re
 
@@ -83,6 +85,7 @@ class ContactHelper:
         self.select_contact_by_index(index)
         wd.find_element_by_xpath("//input[@value = 'Delete']").click()
         wd.switch_to_alert().accept()
+        time.sleep(1)
         wd.find_element_by_link_text('home').click()
         self.contact_cache = None
 
@@ -96,6 +99,14 @@ class ContactHelper:
         return len(wd.find_elements_by_xpath("//tr[position()>1]"))
 
     contact_cache = None
+
+    def index_of_contact_on_page(self, contact):
+        wd = self.app.wd
+        s = []
+        for element in wd.find_elements_by_xpath("//tr[position()>1]"):
+            cont_id = element.find_element_by_name("selected[]").get_attribute("value")
+            s.append(cont_id)
+        return list(list(s)).index(contact.id)
 
     def get_contact_list(self):
         if self.contact_cache is None:

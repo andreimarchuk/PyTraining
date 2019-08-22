@@ -7,40 +7,50 @@ import random
 from data.contacts import testdata
 
 
-def test_add_contact(app, json_contacts):
+def test_add_contact(app, db, json_contacts, check_ui):
     contact = json_contacts
-    old_contacts = app.contact.get_contact_list()
+    old_contacts = db.get_contact_list()
     app.contact.create(contact)
     assert len(old_contacts) + 1 == app.contact.count()
-    new_contacts = app.contact.get_contact_list()
+    new_contacts = db.get_contact_list()
     old_contacts.append(contact)
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
+    if check_ui:
+        assert sorted(new_contacts, key=Contact.id_or_max) == sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
 
 
 @pytest.mark.parametrize("contact", testdata, ids=[repr(x) for x in testdata])
-def test_edit_contact(app, contact):
+def test_edit_contact(app, db, contact, check_ui):
     if app.contact.count() == 0:
         app.contact.create(Contact(firstname="test firstname", lastname="test lastname"))
-    old_contacts = app.contact.get_contact_list()
-    index = random.randrange(len(old_contacts))
-    contact.id = old_contacts[index].id
-    app.contact.edit_some_contact(contact, index)
+    old_contacts = db.get_contact_list()
+    contact_to_edit = random.choice(old_contacts)
+    contact.id = contact_to_edit.id
+    index_in_old_contacts = old_contacts.index(contact_to_edit)
+    index_on_page = app.contact.index_of_contact_on_page(contact_to_edit)
+    app.contact.edit_some_contact(contact, index_on_page)
     assert len(old_contacts) == app.contact.count()
-    new_contacts = app.contact.get_contact_list()
-    old_contacts[index] = contact
+    new_contacts = db.get_contact_list()
+    old_contacts[index_in_old_contacts] = contact
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
+    if check_ui:
+        assert sorted(new_contacts, key=Contact.id_or_max) == sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
 
 
-def test_delete_contact(app):
+def test_delete_contact(app, db, check_ui):
     if app.contact.count() == 0:
         app.contact.create(Contact(firstname="test firstname", middlename="test middlename", lastname="test lastname"))
-    old_contacts = app.contact.get_contact_list()
-    index = random.randrange(len(old_contacts))
-    app.contact.delete_some_contact(index)
+    old_contacts = db.get_contact_list()
+    contact_to_delete = random.choice(old_contacts)
+    index_in_old_contacts = old_contacts.index(contact_to_delete)
+    index_on_page = app.contact.index_of_contact_on_page(contact_to_delete)
+    app.contact.delete_some_contact(index_on_page)
     assert len(old_contacts) - 1 == app.contact.count()
-    new_contacts = app.contact.get_contact_list()
-    old_contacts[index:index+1] = []
+    new_contacts = db.get_contact_list()
+    old_contacts[index_in_old_contacts:index_in_old_contacts+1] = []
     assert old_contacts == new_contacts
+    if check_ui:
+        assert sorted(new_contacts, key=Contact.id_or_max) == sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
 
 
 def test_compare_some_contact_data_from_home_edit_pages(app):
