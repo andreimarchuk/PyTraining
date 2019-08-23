@@ -64,6 +64,18 @@ def test_compare_some_contact_data_from_home_edit_pages(app):
     assert contact_from_home_page.all_emails_from_home_page == merge_emails_like_on_home_page(contact_from_edit_page)
 
 
+def test_compare_contacts_data_from_home_page_db(app, db):
+    contact_from_home_page = sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
+    contacts_from_db = sorted(db.get_contact_list(), key=Contact.id_or_max)
+    for element in contact_from_home_page:
+        index = contact_from_home_page.index(element)
+        assert element.lastname == contacts_from_db[index].lastname
+        assert element.firstname == contacts_from_db[index].firstname
+        assert element.address == contacts_from_db[index].address
+        assert element.all_phones_from_home_page == merge_phones_like_on_home_page(contacts_from_db[index])
+        assert element.all_emails_from_home_page == merge_emails_like_on_home_page(contacts_from_db[index])
+
+
 def clear(s):
     return re.sub("[() -]", "", s)
 
