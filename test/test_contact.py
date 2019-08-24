@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 import time
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+
 from model.contact import Contact
+from model.group import Group
 import pytest
 import re
 import random
@@ -76,6 +81,41 @@ def test_compare_contacts_data_from_home_page_db(app, db):
         assert element.all_emails_from_home_page == merge_emails_like_on_home_page(contacts_from_db[index])
 
 
+def test_add_some_contact_to_some_group(app, db):
+    if app.contact.count() == 0:
+        app.contact.create(Contact(firstname="test firstname", middlename="test middlename", lastname="test lastname"))
+    if app.group.count() == 0:
+        app.group.create(Group(name="test group", header="test group header", footer="test group footer"))
+    group = random.choice(app.group.get_group_list())
+    app.return_to_homepage()
+    contact = app.contact.contact_out_of_group(group)
+    old_contacts_in_group = app.contact.get_contacts_in_group_list(group)
+    app.select_element_in_dropdown("//select[@name='group']", "[all]")
+    app.contact.add_contact_to_group(contact, group)
+    new_contacts_in_group = db.get_contacts_in_group_list(group)
+    old_contacts_in_group.append(contact)
+    assert app.contact.only_id_sorted_list(old_contacts_in_group) == app.contact.only_id_sorted_list(new_contacts_in_group)
+
+
+def test_remove_some_contact_from_some_group(app, db):
+    if app.contact.count() == 0:
+        app.contact.create(Contact(firstname="test firstname", middlename="test middlename", lastname="test lastname"))
+    if app.group.count() == 0:
+        app.group.create(Group(name="test group", header="test group header", footer="test group footer"))
+    if app.group.group_with_contacts_is_present() is False:
+        app.select_element_in_dropdown("//select[@name='group']", "[all]")
+        test_add_some_contact_to_some_group(app, db)
+    group = app.group.group_with_contacts()
+    contact = random.choice(app.contact.get_contact_list())
+    old_contacts_in_group = app.contact.get_contacts_in_group_list(group)
+    app.contact.remove_contact_from_group(contact, group)
+    new_contacts_in_group = db.get_contacts_in_group_list(group)
+    new_contacts_in_group.append(contact)
+    assert app.contact.only_id_sorted_list(old_contacts_in_group) == app.contact.only_id_sorted_list(new_contacts_in_group)
+
+
+
+
 def clear(s):
     return re.sub("[() -]", "", s)
 
@@ -90,3 +130,8 @@ def merge_phones_like_on_home_page(contact):
 def merge_emails_like_on_home_page(contact):
     return "\n".join(filter(lambda x: x != "",
                             filter(lambda x: x is not None, [contact.email, contact.email2, contact.email3])))
+
+
+
+def trim_list_in_list():
+    List1 = []

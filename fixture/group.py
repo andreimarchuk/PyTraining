@@ -111,6 +111,38 @@ class GroupHelper:
                 self.group_cache.append(Group(name=text, id=id))
         return list(self.group_cache)
 
+    def group_with_contacts(self):
+        wd = self.app.wd
+        self.open_group_page()
+        self.get_group_list()
+        self.app.return_to_homepage()
+        for el in self.get_group_list():
+            self.app.select_element_in_dropdown("//select[@name='group']", el.name)
+            if len(wd.find_elements_by_xpath("//tr[position()>1]")) > 0:
+                break
+        return el
+
+    def get_group_properties(self):
+        wd = self.app.wd
+        self.open_group_page()
+        self.get_group_list()
+        self.app.return_to_homepage()
+        for el in self.get_group_list():
+            self.app.select_element_in_dropdown("//select[@name='group']", el.name)
+            if len(wd.find_elements_by_xpath("//tr[position()>1]")) > 0:
+                break
+        return el
+
+    def group_with_contacts_is_present(self):
+        wd = self.app.wd
+        for el in self.get_group_list():
+            self.app.return_to_homepage()
+            self.app.select_element_in_dropdown("//select[@name='group']", el.name)
+            if len(wd.find_elements_by_xpath("//tr[position()>1]")) > 0:
+                return True
+            else:
+                return False
+
     def delete_all_groups(self):
         wd = self.app.wd
         self.open_group_page()

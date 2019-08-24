@@ -1,4 +1,5 @@
 import os
+import random
 import time
 
 from model.contact import Contact
@@ -98,18 +99,16 @@ class ContactHelper:
         self.app.return_to_homepage()
         return len(wd.find_elements_by_xpath("//tr[position()>1]"))
 
-    contact_cache = None
-
     def index_of_contact_on_page(self, contact):
         wd = self.app.wd
         s = []
         for element in wd.find_elements_by_xpath("//tr[position()>1]"):
             cont_id = element.find_element_by_name("selected[]").get_attribute("value")
             s.append(cont_id)
-        return list(list(s)).index(contact.id)
+        return s.index(contact.id)
+        # return list(list(s)).index(contact.id)
 
     def get_contact_list(self):
-        if self.contact_cache is None:
             wd = self.app.wd
             self.app.return_to_homepage()
             self.contact_cache = []
@@ -122,7 +121,8 @@ class ContactHelper:
                 all_phones = element.find_element_by_xpath("td[6]").text
                 self.contact_cache.append(Contact(id=id, lastname=lastname, firstname=firstname, address=address,
                                   all_phones_from_home_page=all_phones, all_emails_from_home_page=all_emails))
-        return list(self.contact_cache)
+            return list(self.contact_cache)
+
 
     def get_contact_info_from_edit_page(self, index):
         wd = self.app.wd
@@ -153,6 +153,56 @@ class ContactHelper:
         phone2 = re.search("P: (.*)", text).group(1)
         return Contact(home=home, mobile=mobile, work=work, phone2=phone2)
 
+    def get_contacts_in_group_list(self, group):
+        wd = self.app.wd
+        self.app.select_element_in_dropdown("//select[@name='group']", group.name)
+        list = []
+        for element in wd.find_elements_by_xpath("//tr[position()>1]"):
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            lastname = element.find_element_by_xpath("td[2]").text
+            firstname = element.find_element_by_xpath("td[3]").text
+            address = element.find_element_by_xpath("td[4]").text
+            all_emails = element.find_element_by_xpath("td[5]").text
+            all_phones = element.find_element_by_xpath("td[6]").text
+            list.append(Contact(id=id, lastname=lastname, firstname=firstname, address=address,
+                                              all_phones_from_home_page=all_phones,
+                                              all_emails_from_home_page=all_emails))
+        return list
+
+    def contact_out_of_group(self, group):
+        all_contacts = self.get_contact_list()
+        contacts_in_group = self.get_contacts_in_group_list(group)
+        contacts_out_of_group = [item for item in all_contacts if item not in contacts_in_group]
+        if len(contacts_out_of_group) == 0:
+            self.create(Contact(firstname="test firstname_add_to_group", middlename="test middlename", lastname="test lastname"))
+            all_contacts = self.get_contact_list()
+            contacts_in_group = self.get_contacts_in_group_list(group)
+            contacts_out_of_group = [item for item in all_contacts if item not in contacts_in_group]
+        return random.choice(contacts_out_of_group)
+
+    def add_contact_to_group(self, contact, group):
+        wd = self.app.wd
+        self.select_contact_by_index(self.index_of_contact_on_page(contact))
+        var1 = group.name
+        self.app.select_element_in_dropdown("//select[@name='to_group']", group.name)
+        wd.find_element_by_name("add").click()
+        self.app.return_to_homepage()
+
+    def remove_contact_from_group(self, contact, group):
+        wd = self.app.wd
+        self.app.select_element_in_dropdown("//select[@name='group']", group.name)
+        self.select_contact_by_index(self.index_of_contact_on_page(contact))
+        wd.find_element_by_name("remove").click()
+        self.app.return_to_homepage()
+
+
+
+    def only_id_sorted_list(self, list_of_item):
+        l = []
+        for element in list_of_item:
+            id = element.id
+            l.append(Contact(id=id))
+        return sorted(l, key=Contact.id_or_max)
 
     # def edit(self, searched_lastname, searched_firstname, contactEdit):
     #     wd = self.app.wd

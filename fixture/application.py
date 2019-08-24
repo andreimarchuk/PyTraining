@@ -41,6 +41,12 @@ class Application:
         Select(wd.find_element_by_xpath(path)).select_by_visible_text(value)
         wd.find_element_by_xpath(path).click()
 
+    def select_element_in_dropdown_by_text(self, path, value):
+        wd = self.wd
+        wd.find_element_by_xpath(path).click()
+        Select(wd.find_element_by_xpath(path)).select_
+        wd.find_element_by_xpath(path).click()
+
     def open_home_page(self):
         wd = self.wd
         wd.get(self.base_url)
