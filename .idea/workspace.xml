@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="28eecc04-a008-4d62-a38c-aae9feaed18b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/contacts.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/contacts.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generator/contact.py" beforeDir="false" afterPath="$PROJECT_DIR$/generator/contact.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -414,23 +412,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bdd/contact_steps.py</url>
-          <line>74</line>
+          <line>73</line>
           <option name="timeStamp" value="317" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bdd/contact_steps.py</url>
-          <line>76</line>
+          <line>74</line>
           <option name="timeStamp" value="319" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bdd/contact_steps.py</url>
-          <line>77</line>
+          <line>75</line>
           <option name="timeStamp" value="320" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bdd/contact_steps.py</url>
-          <line>78</line>
-          <option name="timeStamp" value="321" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
