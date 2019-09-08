@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28eecc04-a008-4d62-a38c-aae9feaed18b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdd/contact_steps.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdd/test_contact.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +59,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.pytest in contact_steps.py">
+  <component name="RunManager" selected="Python tests.pytest in test_contact.py">
     <configuration name="contact" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PyTraining" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -78,7 +81,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for contact_steps.test_delete_some_contact" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for bdd.test_contact.test_delete_some_contact" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="PyTraining" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -89,11 +92,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;contact_steps.test_delete_some_contact&quot;" />
+      <option name="_new_target" value="&quot;bdd.test_contact.test_delete_some_contact&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for contact_steps.test_edit_some_contact" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for bdd.test_contact.test_edit_some_contact" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="PyTraining" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -104,7 +107,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;contact_steps.test_edit_some_contact&quot;" />
+      <option name="_new_target" value="&quot;bdd.test_contact.test_edit_some_contact&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -123,7 +126,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in contact_steps.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest in test_contact.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="PyTraining" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -134,24 +137,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/bdd/contact_steps.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/bdd/test_contact.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python tests.pytest for contact_steps.test_delete_some_contact" />
-      <item itemvalue="Python tests.pytest for contact_steps.test_edit_some_contact" />
-      <item itemvalue="Python tests.pytest for test_contact.test_add_contact" />
       <item itemvalue="Python.contact" />
-      <item itemvalue="Python tests.pytest in contact_steps.py" />
+      <item itemvalue="Python tests.pytest for bdd.test_contact.test_delete_some_contact" />
+      <item itemvalue="Python tests.pytest for bdd.test_contact.test_edit_some_contact" />
+      <item itemvalue="Python tests.pytest for test_contact.test_add_contact" />
+      <item itemvalue="Python tests.pytest in test_contact.py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest in contact_steps.py" />
-        <item itemvalue="Python tests.pytest for contact_steps.test_edit_some_contact" />
+        <item itemvalue="Python tests.pytest in test_contact.py" />
+        <item itemvalue="Python tests.pytest for bdd.test_contact.test_edit_some_contact" />
         <item itemvalue="Python tests.pytest for test_contact.test_add_contact" />
         <item itemvalue="Python.contact" />
-        <item itemvalue="Python tests.pytest for contact_steps.test_delete_some_contact" />
+        <item itemvalue="Python tests.pytest for bdd.test_contact.test_delete_some_contact" />
       </list>
     </recent_temporary>
   </component>
@@ -406,23 +409,23 @@
           <option name="timeStamp" value="302" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bdd/contact_steps.py</url>
-          <line>29</line>
+          <url>file://$PROJECT_DIR$/bdd/test_contact.py</url>
+          <line>32</line>
           <option name="timeStamp" value="303" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bdd/contact_steps.py</url>
-          <line>73</line>
+          <url>file://$PROJECT_DIR$/bdd/test_contact.py</url>
+          <line>83</line>
           <option name="timeStamp" value="317" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bdd/contact_steps.py</url>
-          <line>74</line>
+          <url>file://$PROJECT_DIR$/bdd/test_contact.py</url>
+          <line>84</line>
           <option name="timeStamp" value="319" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bdd/contact_steps.py</url>
-          <line>75</line>
+          <url>file://$PROJECT_DIR$/bdd/test_contact.py</url>
+          <line>85</line>
           <option name="timeStamp" value="320" />
         </line-breakpoint>
       </breakpoints>
